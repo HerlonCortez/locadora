@@ -24,8 +24,8 @@ public class SwaggerConfiguration {
     
     private ApiInfo apiInfo(){
         return new ApiInfo(
-                "Spring Boot Blog REST APIs",
-                "Spring Boot Blog REST API Documentation",
+                "Locadora REST APIs",
+                "Locadora REST API Documentation",
                 "1",
                 "Terms of service",
                 new Contact("Sammet Development", "www.sammet.com", "sammet@gmail.com"),
