@@ -1,7 +1,10 @@
 package com.cortez.spring.service;
 
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.transaction.Transactional;
 
@@ -22,6 +25,7 @@ public class LocacaoService {
 	@Autowired
 	private LocacaoRepository locacaoRepository;
 	
+	
 	@Transactional
 	public Locacao salvar(Locacao locacao) {
 		
@@ -40,7 +44,8 @@ public class LocacaoService {
 	}
 	
 	private boolean verifyPossibilityLocacao(Locacao locacao) {
-		if (locacao.getData_locacao().equals(new Date())) {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-DD");
+		if (df.format(locacao.getData_locacao()).equals(df.format(new Date()))) {
 			return true;
 		}
 		return false;

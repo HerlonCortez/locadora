@@ -1,6 +1,7 @@
 package com.cortez.spring.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -28,7 +29,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@CrossOrigin(origins = {"http://localhost:8081"})
+@CrossOrigin(origins = "*")
 @RequestMapping("/clientes")
 public class ClienteController {
 
@@ -40,9 +41,14 @@ public class ClienteController {
 		return clienteRepository.findAll();
 	}
 	
-	@GetMapping("/{clientId}")
-	public ResponseEntity<Cliente> buscar(@PathVariable Long clientId) {
-		return clienteRepository.findById(clientId)
+	@GetMapping("/count")
+	public Long count(){
+		return clienteRepository.count();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Cliente> buscar(@PathVariable UUID id) {
+		return clienteRepository.findById(id)
 				.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());
 	}
@@ -54,7 +60,7 @@ public class ClienteController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Cliente> alterar(@PathVariable Long id, @Valid @RequestBody Cliente cliente){
+	public ResponseEntity<Cliente> alterar(@PathVariable UUID id, @Valid @RequestBody Cliente cliente){
 		if (!clienteRepository.existsById(id)) {
 			ResponseEntity.notFound().build();
 		}
@@ -64,7 +70,7 @@ public class ClienteController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> remover(@PathVariable Long id){
+	public ResponseEntity<Void> remover(@PathVariable UUID id){
 		if (!clienteRepository.existsById(id)) {
 			ResponseEntity.notFound().build();
 		}

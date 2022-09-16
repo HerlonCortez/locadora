@@ -1,6 +1,10 @@
 package com.cortez.spring;
 
 
+import java.util.TimeZone;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,4 +18,8 @@ public class LocadoraApplication {
 		SpringApplication.run(LocadoraApplication.class, args);
 	}
 
+	@PostConstruct
+	public void init(){
+		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+	}
 }

@@ -1,6 +1,8 @@
 package com.cortez.spring.entities;
 
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +25,8 @@ public class Cliente {
 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
 	
 	@NotBlank(message = "{NotBlank}")
 	@Size(max = 50)
@@ -61,7 +63,7 @@ public class Cliente {
 	
 	@NotBlank(message = "{NotBlank}")
 	@Size(max = 30)
-	private String rua;
+	private String logradouro;
 	
 	@Nullable
 	private String complemento;

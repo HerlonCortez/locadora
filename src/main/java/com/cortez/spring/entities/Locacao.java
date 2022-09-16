@@ -1,7 +1,9 @@
 package com.cortez.spring.entities;
 
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,8 +27,8 @@ import lombok.Setter;
 public class Locacao {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
 	
 	@ManyToOne
 	@JoinColumn(name = "livro_id")

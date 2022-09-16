@@ -1,6 +1,7 @@
 package com.cortez.spring.service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -32,7 +33,7 @@ public class EditoraService {
 	}
 	
 	@Transactional
-	public void delete(Long id) {
+	public void delete(UUID id) {
 		editoraRepository.deleteById(id);
 	}
 

@@ -2,6 +2,7 @@ package com.cortez.spring.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,8 +27,8 @@ import lombok.Setter;
 public class Editora implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
 	
 	@NotBlank
 	@Size(max = 50)

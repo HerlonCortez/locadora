@@ -43,4 +43,9 @@ public class LivroController {
 	public List<Livro> listar(){
 		return livroRepository.findAll();
 	}
+	
+	@GetMapping("/count")
+	public Long count() {
+		return livroRepository.count();
+	}
 }

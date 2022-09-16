@@ -1,5 +1,7 @@
 package com.cortez.spring.entities;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,8 +22,8 @@ import lombok.Setter;
 public class Livro {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
 	
 	@NotBlank(message = "{NotBlank}")
 	@Size(max = 50)

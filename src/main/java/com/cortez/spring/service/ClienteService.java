@@ -1,5 +1,7 @@
 package com.cortez.spring.service;
 
+import java.util.UUID;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,7 @@ public class ClienteService {
 	}
 	
 	@Transactional
-	public void delete(Long id) {
+	public void delete(UUID id) {
 		clienteRepository.deleteById(id);
 	}
 }
