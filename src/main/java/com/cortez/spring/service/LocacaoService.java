@@ -2,9 +2,7 @@ package com.cortez.spring.service;
 
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.TimeZone;
 
 import javax.transaction.Transactional;
 
