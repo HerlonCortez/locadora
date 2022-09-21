@@ -5,9 +5,11 @@ import java.util.UUID;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.cortez.spring.repository.ClienteRepository;
+
 import com.cortez.spring.entities.Cliente;
 
 import lombok.AllArgsConstructor;
@@ -21,14 +23,9 @@ public class ClienteService {
 
 	@Transactional
 	public Cliente salvar(Cliente cliente) {
+
+		return clienteRepository.save(cliente);	
 		
-//		Optional<Cliente> c = clienteRepository.findByEmail(cliente.getEmail());
-//		if (c.isPresent()) {
-//			if (!c.get().getId().equals(cliente.getId()) && cliente.getEmail().equals(c.get().getEmail())) {
-//				throw new NegocioException("Já existe um cliente cadastrado com este e-mail", HttpStatus.CONFLICT);
-//			}
-//		}
-		return clienteRepository.save(cliente);
 	}
 	
 	@Transactional

@@ -1,5 +1,6 @@
 package com.cortez.spring.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -23,10 +24,13 @@ public class LivroService {
 	
 	@Transactional
 	public Livro salvar(Livro livro) {
-		Optional<Livro> l = livroRepository.findByDescricao(livro.getDescricao());
-		if(l.isPresent()){
-			if(!l.get().getId().equals(livro.getId()) && livro.getDescricao().equals(l.get().getDescricao())){
-				throw new NegocioException("Já existe um livro cadastrado com este nome", HttpStatus.CONFLICT);
+		List<Livro> livros = livroRepository.findByDescricao(livro.getDescricao());
+		if(!livros.isEmpty()){
+			for (Livro l : livros) {
+				if(l.getDescricao().equals(livro.getDescricao()) 
+				&& l.getEditora().getId().equals(livro.getEditora().getId())){
+					throw new NegocioException("Já existe um livro com as mesmas características", HttpStatus.CONFLICT);
+				}
 			}
 		}
 		return livroRepository.save(livro);

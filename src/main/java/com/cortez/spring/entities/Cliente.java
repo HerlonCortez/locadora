@@ -3,13 +3,18 @@ package com.cortez.spring.entities;
 
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.UniqueElements;
+import org.hibernate.validator.constraints.br.CPF;
 
 import com.sun.istack.Nullable;
 
@@ -32,14 +37,17 @@ public class Cliente {
 	@Size(max = 50)
 	private String nome;
 	
+	@Column(unique = true)
 	@NotBlank(message = "{NotBlank}")
 	@Size(max = 14)
+	@CPF
 	private String cpf;
 	
 	@NotBlank(message = "{NotBlank}")
 	@Size(max = 14)
 	private String celular;
 	
+	@Column(unique = true)
 	@NotBlank(message = "{NotBlank}")
 	@Email
 	@Size(max = 50)
